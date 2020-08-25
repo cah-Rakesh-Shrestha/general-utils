@@ -1,0 +1,14 @@
+**/node_modules
+!jest.config.js
+!babel.config.js
+!babel-transformer.js
+*.js.map
+.idea/
+.vscode/*.*
+node_modules/
+tmp/
+temp/
+**/*.jest
+**/*coverage
+**/yarn-error.log
+.DS_Store

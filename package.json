@@ -1,0 +1,31 @@
+{
+    "name": "general-utils",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "private": true,
+    "scripts": {
+        "test": "jest"
+    },
+    "author": "Piyush Ramavat",
+    "license": "UNLICENSED",
+    "dependencies": {
+        "class-transformer": "^0.2.3",
+        "class-validator": "^0.11.0",
+        "compare-versions": "^3.6.0",
+        "errors-framework": "https://bitbucket.org/scalamed-code/errors-framework#v1.0.0",
+        "lodash": "^4.17.11",
+        "moment": "^2.26.0",
+        "uuid": "^3.3.2"
+    },
+    "devDependencies": {
+        "@babel/runtime": "7.4.5",
+        "@types/colors": "^1.2.1",
+        "@types/compare-versions": "^3.3.0",
+        "@types/jest": "^23.3.10",
+        "@types/lodash": "^4.14.120",
+        "@types/moment": "^2.13.0",
+        "@types/uuid": "^3.4.4",
+        "jest": "^23.6.0"
+    }
+}

@@ -1,29 +1,15 @@
-# README #
+# What is the Error Framework?
+The General Utils provides myriad utility classes and functions to process dates, env variables, config, deployment-info, version management etc.
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+# What are the main parts of the Error Framework
+The `general-util` consists of:
+- Log management utilities: LogProxy and AmplitudeLogProvider that uses LogProxy
+- De-identification utilities: To redact sensitive information automatically,
+- Date utilities
+- Config and Env variable management
+- String helper utilities
+- Package management utilities
+- Class property reference utilities
+- Version management utilities
+- Decorators
+- Web proxy for making external HTTP calls.
