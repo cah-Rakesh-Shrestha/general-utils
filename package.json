@@ -1,11 +1,14 @@
 {
     "name": "general-utils",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "",
     "main": "index.js",
     "private": true,
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "tsc:watch:core": "tsc -p tsconfig.json -w --listEmittedFiles false --skipLibCheck",
+        "tsc:core": "tsc -p tsconfig.json --skipLibCheck",
+        "tsc": "yarn run tsc:watch:core"
     },
     "author": "Piyush Ramavat",
     "license": "UNLICENSED",
