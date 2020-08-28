@@ -126,17 +126,17 @@ export class CanonicalDate {
 
     /** return delta between two dates in days */
     static dateDiffInDays(date1: Date, date2: Date) {
-      const utcDate1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
-      const utcDate2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
-    
-      return Math.floor((utcDate2 - utcDate1) / MsPerDay);
+        const utcDate1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
+        const utcDate2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
+
+        return Math.floor((utcDate2 - utcDate1) / MsPerDay);
     }
 
     static getYearDiff(date1: DateItemType, date2?: DateItemType) {
         const date1AsMomemt = moment(date1);
         const date2AsMomemt = date2 ? moment(date2) : moment();
 
-        if(date1AsMomemt.isValid() && date2AsMomemt.isValid()){
+        if (date1AsMomemt.isValid() && date2AsMomemt.isValid()) {
             return date2AsMomemt.diff(date1, 'years', false);
         } else {
             throw new OpError(
@@ -147,8 +147,8 @@ export class CanonicalDate {
         }
     }
 
-    static validateDateItem(item: DateItemType): void{
-        if(!moment(item).isValid()){
+    static validateDateItem(item: DateItemType): void {
+        if (!moment(item).isValid()) {
             throw new OpError(
                 CanonicalDate.name,
                 "validateDateItem",
@@ -156,5 +156,20 @@ export class CanonicalDate {
             );
         }
     }
-    
+
+    static getDayPeriod = () => {
+        const currentTime = new Date();
+        const currentHour = currentTime.getHours();
+
+        if (currentHour < 12) {
+            return 'morning';
+
+        } else if (currentHour < 18) {
+            return 'afternoon';
+
+        } else {
+            return 'evening';
+        }
+    }
+
 }
