@@ -125,19 +125,27 @@ export class CanonicalDate {
     }
 
     /** return delta between two dates in days */
-    static dateDiffInDays(date1: Date, date2: Date) {
-        const utcDate1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
-        const utcDate2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
+    static dateDiffInDays(date1: DateItemType, date2?: DateItemType) {
+        const date1AsMoment = moment(date1);
+        const date2AsMoment = date2 ? moment(date2) : moment();
 
-        return Math.floor((utcDate2 - utcDate1) / MsPerDay);
+        if (date1AsMoment.isValid() && date2AsMoment.isValid()) {
+            return date2AsMoment.diff(date1, 'days', false);
+        } else {
+            throw new OpError(
+                CanonicalDate.name,
+                "getYearDiff",
+                "given items are not valid date items"
+            );
+        }
     }
 
     static getYearDiff(date1: DateItemType, date2?: DateItemType) {
-        const date1AsMomemt = moment(date1);
-        const date2AsMomemt = date2 ? moment(date2) : moment();
+        const date1AsMoment = moment(date1);
+        const date2AsMoment = date2 ? moment(date2) : moment();
 
-        if (date1AsMomemt.isValid() && date2AsMomemt.isValid()) {
-            return date2AsMomemt.diff(date1, 'years', false);
+        if (date1AsMoment.isValid() && date2AsMoment.isValid()) {
+            return date2AsMoment.diff(date1, 'years', false);
         } else {
             throw new OpError(
                 CanonicalDate.name,
