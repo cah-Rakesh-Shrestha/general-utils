@@ -12,4 +12,5 @@ export * from "./i-service-proxy";
 export * from "./web-service-proxy-base";
 export * from "./amplitude-log-provider";
 export * from "./de-identify";
-export * from "./semver"
+export * from "./semver";
+export * from "./metric-monitor";
