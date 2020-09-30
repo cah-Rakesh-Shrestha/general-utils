@@ -72,13 +72,19 @@ export class MetricMonitor {
             return;
         }
         this.isSyncing = true;
-        await this.serviceProxy!.sync(this.metricDataActiveList, this.authToken);
+        try {
+            await this.serviceProxy!.sync(this.metricDataActiveList, this.authToken);
 
-        // Move wait list data over to active list and reset wait list
-        this.metricDataActiveList = this.metricDataWaitList;
-        this.metricDataWaitList = {}
+            // Move wait list data over to active list and reset wait list
+            this.metricDataActiveList = this.metricDataWaitList;
+            this.metricDataWaitList = {}
 
-        this.isSyncing = false;
+        } catch (e) {
+            throw new OpError(MetricMonitor.name, 'sync', e)
+
+        } finally {
+            this.isSyncing = false;
+        }
     }
 
     setAuthToken = (authToken: string) => {
@@ -90,9 +96,9 @@ export class MetricMonitor {
             throw new OpError(MetricMonitor.name, 'event', 'MetricMonitor not Initialized');
         }
 
-        const dataPointKey = `${type}/${name}`;
+        const dataPointKey = `${type}/${encodeURIComponent(name)}`;
         const dataPointValue = Date.now() / 1000;
-        
+
         // add this event
         if (this.isSyncing) {
             this.metricDataWaitList[dataPointKey] = dataPointValue;
