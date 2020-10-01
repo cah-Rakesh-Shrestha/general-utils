@@ -137,10 +137,10 @@ class MetricServiceProxy extends WebServiceProxyBase {
     }
 
     stringify = function (obj: Object) {
-        var qs = _.reduce(obj, function (result, value, key) {
+        var qs = _.reduce(obj, function (result: string, value: Object, key: string) {
             if (!_.isNull(value) && !_.isUndefined(value)) {
                 if (_.isArray(value)) {
-                    result += _.reduce(value, function (result1, value1) {
+                    result += _.reduce(value, function (result1: string, value1: Object) {
                         if (!_.isNull(value1) && !_.isUndefined(value1)) {
                             result1 += key + '=' + value1 + '&';
                             return result1
