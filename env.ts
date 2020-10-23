@@ -42,7 +42,8 @@ export class Env {
         const val =
             process.env.DEPLOYMENT_TYPE ||
             process.env.REACT_NATIVE_DEPLOYMENT_TYPE ||
-            (g.Expo && g.Expo.Constants.manifest.releaseChannel);
+            (g.Expo && g.Expo.Constants.manifest.releaseChannel) ||
+            (g.React && g.React.deploymentType);
 
         const value = val ? val.toLowerCase() : DeploymentType.dev;
 
