@@ -13,6 +13,7 @@ const listEnv = !!process.env.LIST_ENV;
 const allowGeneralEnvDefaults =
     !!process.env.ALLOW_GENERAL_ENV_DEFAULTS ||
     g.Expo ||
+    g.React ||
     process.env.SERVICE_START_MODE === "generateToken";
 
 export interface IEnvJson {
@@ -42,7 +43,8 @@ export class Env {
         const val =
             process.env.DEPLOYMENT_TYPE ||
             process.env.REACT_NATIVE_DEPLOYMENT_TYPE ||
-            (g.Expo && g.Expo.Constants.manifest.releaseChannel);
+            (g.Expo && g.Expo.Constants.manifest.releaseChannel) ||
+            (g.React && g.React.deploymentType);
 
         const value = val ? val.toLowerCase() : DeploymentType.dev;
 
@@ -65,11 +67,12 @@ export class Env {
             safeDefaults.demo &&
             safeDefaults.test &&
             safeDefaults.qa &&
-            safeDefaults.prod;
+            safeDefaults.staging &&
+            safeDefaults.production;
 
         if (
             !fullySpecified &&
-            !allowGeneralEnvDefaults &&
+            !(allowGeneralEnvDefaults || g.React) &&
             (this.deploymentType === DeploymentType.production ||
                 this.deploymentType === DeploymentType.staging)
         ) {
