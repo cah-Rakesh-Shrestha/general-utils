@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 import { OpError } from "errors-framework";
 
-export class StringHelper {
+export class StringUtils {
 
     /**
      * Substitute palceholders in given strings with respective parameterised values
@@ -28,7 +28,7 @@ export class StringHelper {
         if (placeholderParams && placeholderParams.length > 0) {
             if (!replacementParams) {
                 throw new OpError(
-                    StringHelper.name,
+                    StringUtils.name,
                     "substitutePlaceholderParams",
                     `at least one placeholder param is required for substitution`
                 );
@@ -50,7 +50,7 @@ export class StringHelper {
             const palceholderVariablesCheck = searchString.match(searchRegex);
             if (palceholderVariablesCheck && palceholderVariablesCheck.length > 0) {
                 throw new OpError(
-                    StringHelper.name,
+                    StringUtils.name,
                     "substituteStringParams",
                     `All of the placeholder params in given search string were not substituted`
                 );
