@@ -1,23 +1,31 @@
 "use strict";
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(require("./env"));
-__export(require("./amplitude-log-provider"));
-__export(require("./canonical-date"));
-__export(require("./conditionally"));
-__export(require("./config-base"));
-__export(require("./date-reviver"));
-__export(require("./de-identify"));
-__export(require("./deployment-info"));
-__export(require("./log-proxy"));
-__export(require("./metric-monitor"));
-__export(require("./object-utils"));
-__export(require("./package-utils"));
-__export(require("./prop-ref"));
-__export(require("./semver"));
-__export(require("./sequential-promises"));
-__export(require("./string-utils"));
-__export(require("./web-service-proxy-base"));
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJpbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7OztBQUFBLDJCQUFzQjtBQUN0Qiw4Q0FBeUM7QUFDekMsc0NBQWlDO0FBQ2pDLHFDQUFnQztBQUNoQyxtQ0FBOEI7QUFDOUIsb0NBQStCO0FBQy9CLG1DQUE4QjtBQUM5Qix1Q0FBa0M7QUFFbEMsaUNBQTRCO0FBQzVCLHNDQUFpQztBQUNqQyxvQ0FBK0I7QUFDL0IscUNBQWdDO0FBQ2hDLGdDQUEyQjtBQUMzQiw4QkFBeUI7QUFDekIsMkNBQXNDO0FBQ3RDLG9DQUErQjtBQUMvQiw4Q0FBeUMifQ==
+__exportStar(require("./env"), exports);
+__exportStar(require("./amplitude-log-provider"), exports);
+__exportStar(require("./canonical-date"), exports);
+__exportStar(require("./conditionally"), exports);
+__exportStar(require("./config-base"), exports);
+__exportStar(require("./date-reviver"), exports);
+__exportStar(require("./de-identify"), exports);
+__exportStar(require("./deployment-info"), exports);
+__exportStar(require("./i-service-proxy"), exports);
+__exportStar(require("./log-proxy"), exports);
+__exportStar(require("./metric-monitor"), exports);
+__exportStar(require("./object-utils"), exports);
+__exportStar(require("./package-utils"), exports);
+__exportStar(require("./prop-ref"), exports);
+__exportStar(require("./semver"), exports);
+__exportStar(require("./sequential-promises"), exports);
+__exportStar(require("./string-utils"), exports);
+__exportStar(require("./web-service-proxy-base"), exports);
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJpbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7QUFBQSx3Q0FBc0I7QUFDdEIsMkRBQXlDO0FBQ3pDLG1EQUFpQztBQUNqQyxrREFBZ0M7QUFDaEMsZ0RBQThCO0FBQzlCLGlEQUErQjtBQUMvQixnREFBOEI7QUFDOUIsb0RBQWtDO0FBQ2xDLG9EQUFrQztBQUNsQyw4Q0FBNEI7QUFDNUIsbURBQWlDO0FBQ2pDLGlEQUErQjtBQUMvQixrREFBZ0M7QUFDaEMsNkNBQTJCO0FBQzNCLDJDQUF5QjtBQUN6Qix3REFBc0M7QUFDdEMsaURBQStCO0FBQy9CLDJEQUF5QyJ9

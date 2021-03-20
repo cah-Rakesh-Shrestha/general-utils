@@ -69,6 +69,27 @@ export class DeIdentify {
         return sanitisedEntityItem;
     }
 
+    /**
+     * Sanitise onlt hidden properties
+     * @param entityItem 
+     * @param strategyConfig 
+     */
+     static sanitiseOnlyHidden(entityItem: any, strategyConfig: any) {
+        const sanitisedEntityItem = Object.assign({});
+        _.forEach(entityItem, (itemValue, itemKey) => {
+            const strategy = _.get(strategyConfig, itemKey);
+            if (strategy) {
+                if (strategy === DeIdentifyStrategy.Hide) {
+                    _.unset(sanitisedEntityItem, itemKey);
+                } else {
+                    _.set(sanitisedEntityItem, itemKey, itemValue);
+                }
+            } else {
+                _.set(sanitisedEntityItem, itemKey, itemValue);
+            }
+        })
+        return sanitisedEntityItem;
+    }
 
 
 
