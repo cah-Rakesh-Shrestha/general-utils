@@ -1,4 +1,4 @@
-import { OpError, ErrorType, UserError } from "errors-framework";
+import { OpError } from "errors-framework";
 import { IServiceProxy } from "./i-service-proxy";
 import { reviveDatesInProperties } from "./date-reviver";
 
@@ -140,16 +140,8 @@ export abstract class WebServiceProxyBase implements IServiceProxy {
         }
 
         if (resultValue && resultValue.__error) {
-            if (resultValue.__error.type === ErrorType.user) {
-                throw new UserError(
-                    resultValue.__error.category,
-                    resultValue.__error.details,
-                    resultValue.__error.debugInfo,
-                    
-                );
-            }
             throw new OpError(
-                "WebServiceProxyBase",
+                WebServiceProxyBase.name,
                 "call",
                 resultValue.__error
             );

@@ -1,5 +1,5 @@
 import { DeploymentType } from "./deployment-info";
-import { OpError, RuleViolationError } from "errors-framework";
+import { OpError } from "errors-framework";
 
 declare const Expo: any;
 
@@ -79,7 +79,9 @@ export class Env {
             if (listEnv) {
                 logger.error(name, "(Missing)");
             } else {
-                throw new RuleViolationError(
+                throw new OpError(
+                    Env.name,
+                    "lookup",
                     "In production and staging deployments, you need to provide fully specified defaults to Env functions",
                     `Missing default for: ${name}`
                 );
