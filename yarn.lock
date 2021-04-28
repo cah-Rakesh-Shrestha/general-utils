@@ -840,9 +840,9 @@ error-ex@^1.2.0:
   dependencies:
     is-arrayish "^0.2.1"
 
-"errors-framework@https://bitbucket.org/scalamed-code/errors-framework#v2.0.8":
-  version "2.0.8"
-  resolved "https://bitbucket.org/scalamed-code/errors-framework#58ad22209a19628dd39da2b34facbdaed50f9ea1"
+"errors-framework@https://bitbucket.org/scalamed-code/errors-framework#v2.0.6":
+  version "2.0.6"
+  resolved "https://bitbucket.org/scalamed-code/errors-framework#f1e6cd9ba59448d724cc70a35e4e86936796abbe"
 
 es-abstract@^1.17.0-next.1, es-abstract@^1.17.2, es-abstract@^1.17.5:
   version "1.17.6"
