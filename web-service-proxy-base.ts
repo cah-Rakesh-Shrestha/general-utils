@@ -140,11 +140,7 @@ export abstract class WebServiceProxyBase implements IServiceProxy {
         }
 
         if (resultValue && resultValue.__error) {
-            throw new OpError(
-                WebServiceProxyBase.name,
-                "call",
-                resultValue.__error
-            );
+            throw resultValue.__error;
         } else if (resultValue && contentType.includes("text/html")) {
             this.onNeedCallHtmlResponse(resultValue);
         } else {
