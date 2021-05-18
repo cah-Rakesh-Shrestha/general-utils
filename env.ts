@@ -15,6 +15,9 @@ const allowGeneralEnvDefaults =
     !!process.env.ALLOW_GENERAL_ENV_DEFAULTS ||
     !!process.env.REACT_NATIVE_ALLOW_GENERAL_ENV_DEFAULTS ||
     !!process.env.EXPO_ALLOW_GENERAL_ENV_DEFAULTS ||
+    // If Expo ? allowDefaults = true. For generated Binary process.env.ALLOW_GENERAL... may not be available
+    ExpoConstants.manifest !== undefined ||
+    ExpoUpdates.releaseChannel !== undefined ||
     process.env.SERVICE_START_MODE === "generateToken";
 
 export interface IEnvJson {
