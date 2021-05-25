@@ -1,21 +1,23 @@
 import { DeploymentType } from "./deployment-info";
 import { OpError } from "errors-framework";
-
-declare const Expo: any;
+/** IMP: This is to make ENV module available in Expo generated Binary */
+//@ts-ignore
+import ExpoConstants from "expo-constants";
+//@ts-ignore
+import * as ExpoUpdates from 'expo-updates';
 
 const logger = console; // cannot use LogProxy here... creates circular dependency
 
-declare var global: any;
 declare var process: any;
-const g: any = global;
 
 const listEnv = !!process.env.LIST_ENV;
 const allowGeneralEnvDefaults =
     !!process.env.ALLOW_GENERAL_ENV_DEFAULTS ||
     !!process.env.REACT_NATIVE_ALLOW_GENERAL_ENV_DEFAULTS ||
     !!process.env.EXPO_ALLOW_GENERAL_ENV_DEFAULTS ||
-    g.Expo ||
-    g.React ||
+    // If Expo ? allowDefaults = true. For generated Binary process.env.ALLOW_GENERAL... may not be available
+    ExpoConstants.manifest !== undefined ||
+    ExpoUpdates.releaseChannel !== undefined ||
     process.env.SERVICE_START_MODE === "generateToken";
 
 export interface IEnvJson {
@@ -44,10 +46,10 @@ export class Env {
     static get deploymentType(): DeploymentType {
         const val =
             process.env.DEPLOYMENT_TYPE ||
-            process.env.REACT_NATIVE_DEPLOYMENT_TYPE ||
-            process.env.EXPO_DEPLOYMENT_TYPE ||
-            (g.Expo && g.Expo.Constants.manifest.releaseChannel) ||
-            (g.React && g.React.deploymentType);
+                process.env.REACT_NATIVE_DEPLOYMENT_TYPE ||
+                process.env.EXPO_DEPLOYMENT_TYPE ||
+                ExpoConstants.manifest.releaseChannel ||
+                ExpoUpdates.releaseChannel !== 'default' ? ExpoUpdates.releaseChannel : DeploymentType.dev;
 
         const value = val ? val.toLowerCase() : DeploymentType.dev;
 
@@ -75,7 +77,7 @@ export class Env {
 
         if (
             !fullySpecified &&
-            !(allowGeneralEnvDefaults || g.React) &&
+            !(allowGeneralEnvDefaults) &&
             (this.deploymentType === DeploymentType.production ||
                 this.deploymentType === DeploymentType.staging)
         ) {
