@@ -53,7 +53,7 @@ export class Env {
 
         const value = val ? val.toLowerCase() : DeploymentType.dev;
 
-        return DeploymentType[value as keyof typeof DeploymentType] as DeploymentType;
+        return DeploymentType[value as keyof typeof DeploymentType] as DeploymentType || DeploymentType.dev;
     }
 
     /**
