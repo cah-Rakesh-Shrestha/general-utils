@@ -1,9 +1,7 @@
 import { DeploymentType } from "./deployment-info";
 import { OpError } from "errors-framework";
 /** IMP: This is to make ENV module available in Expo generated Binary */
-//@ts-ignore
 import ExpoConstants from "expo-constants";
-//@ts-ignore
 import * as ExpoUpdates from 'expo-updates';
 
 const logger = console; // cannot use LogProxy here... creates circular dependency
@@ -48,7 +46,7 @@ export class Env {
             process.env.DEPLOYMENT_TYPE ||
                 process.env.REACT_NATIVE_DEPLOYMENT_TYPE ||
                 process.env.EXPO_DEPLOYMENT_TYPE ||
-                ExpoConstants.manifest.releaseChannel ||
+                (  ExpoConstants.manifest && ExpoConstants.manifest.releaseChannel) ||
                 ExpoUpdates.releaseChannel !== 'default' ? ExpoUpdates.releaseChannel : DeploymentType.dev;
 
         const value = val ? val.toLowerCase() : DeploymentType.dev;
