@@ -13,13 +13,13 @@
     "author": "Piyush Ramavat",
     "license": "UNLICENSED",
     "dependencies": {
-        "class-transformer": "^0.2.3",
-        "class-validator": "^0.11.0",
+        "class-transformer": "^0.5.1",
+        "class-validator": "^0.13.2",
         "compare-versions": "^3.6.0",
         "errors-framework": "https://bitbucket.org/scalamed-code/errors-framework#v2.0.6",
         "lodash": "^4.17.21",
         "moment": "^2.26.0",
-        "uuid": "^3.3.2"
+        "uuid": "^8.3.2"
     },
     "devDependencies": {
         "@babel/runtime": "7.4.5",
@@ -28,7 +28,7 @@
         "@types/jest": "^23.3.10",
         "@types/lodash": "^4.14.179",
         "@types/moment": "^2.13.0",
-        "@types/uuid": "^3.4.4",
+        "@types/uuid": "^8.3.4",
         "jest": "^23.6.0",
         "typescript": "^4.2.3"
     }
