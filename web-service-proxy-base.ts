@@ -84,8 +84,12 @@ export abstract class WebServiceProxyBase implements IServiceProxy {
         serviceFunction?: string,
         data?: any,
         authToken?: string,
-        header?: any
+        header?: any,
+        method?: CallMethod
     ): Promise<any> {
+
+        method = method || this.callMethod;
+
         let uri = `${this.hostName}${this.port ? ":" + this.port : ""}${
             serviceFunction ? `/${
                 this.serviceName ? this.serviceName + "." : ""
@@ -93,11 +97,13 @@ export abstract class WebServiceProxyBase implements IServiceProxy {
             }`;
         let options;
 
-        if (this.callMethod === "GET") {
+        if (method === "GET") {
+            const headers = header ? header : this.onNeedCallHeaders(authToken);
             const queryParams = this.onNeedQueryString(data) || "";
             uri += queryParams ? `?${queryParams}` : "";
             options = {
-                method: this.callMethod
+                method,
+                headers
             };
         } else {
             const headers = header ? header : this.onNeedCallHeaders(authToken);
@@ -109,7 +115,7 @@ export abstract class WebServiceProxyBase implements IServiceProxy {
                 : "text/plain; charset=utf-8";
 
             options = {
-                method: this.callMethod,
+                method,
                 headers,
                 body: isObject ? JSON.stringify(body) : body.toString(),
                 timeout: 60000
