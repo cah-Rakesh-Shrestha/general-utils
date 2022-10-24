@@ -16,7 +16,7 @@
         "class-transformer": "^0.5.1",
         "class-validator": "^0.13.2",
         "compare-versions": "^3.6.0",
-        "errors-framework": "https://bitbucket.org/scalamed-code/errors-framework#v2.0.6",
+        "errors-framework": "https://github.com/cahcommercial/sm-errors-framework.git#v2.0.10",
         "lodash": "^4.17.21",
         "moment": "^2.26.0",
         "uuid": "^3.3.2"
