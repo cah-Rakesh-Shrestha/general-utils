@@ -1,6 +1,6 @@
 {
     "name": "general-utils",
-    "version": "2.0.177",
+    "version": "2.1.0",
     "description": "",
     "main": "index.js",
     "private": true,
