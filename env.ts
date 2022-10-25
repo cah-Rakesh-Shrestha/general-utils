@@ -1,10 +1,5 @@
 import { DeploymentType } from "./deployment-info";
 import { OpError } from "errors-framework";
-/** IMP: This is to make ENV module available in Expo generated Binary */
-//@ts-ignore
-import ExpoConstants from "expo-constants";
-//@ts-ignore
-import * as ExpoUpdates from 'expo-updates';
 
 const logger = console; // cannot use LogProxy here... creates circular dependency
 
@@ -15,9 +10,6 @@ const allowGeneralEnvDefaults =
     !!process.env.ALLOW_GENERAL_ENV_DEFAULTS ||
     !!process.env.REACT_NATIVE_ALLOW_GENERAL_ENV_DEFAULTS ||
     !!process.env.EXPO_ALLOW_GENERAL_ENV_DEFAULTS ||
-    // If Expo ? allowDefaults = true. For generated Binary process.env.ALLOW_GENERAL... may not be available
-    (ExpoConstants.manifest && ExpoConstants.manifest !== undefined )||
-    ExpoUpdates.releaseChannel !== undefined ||
     process.env.SERVICE_START_MODE === "generateToken";
 
 export interface IEnvJson {
@@ -48,8 +40,7 @@ export class Env {
             process.env.DEPLOYMENT_TYPE ||
                 process.env.REACT_NATIVE_DEPLOYMENT_TYPE ||
                 process.env.EXPO_DEPLOYMENT_TYPE ||
-                (ExpoConstants.manifest && ExpoConstants.manifest.releaseChannel )||
-                ExpoUpdates.releaseChannel !== 'default' ? ExpoUpdates.releaseChannel : DeploymentType.dev;
+                DeploymentType.dev;
 
         const value = val ? val.toLowerCase() : DeploymentType.dev;
 

@@ -832,9 +832,9 @@ error-ex@^1.2.0:
   dependencies:
     is-arrayish "^0.2.1"
 
-"errors-framework@https://github.com/cahcommercial/sm-errors-framework.git#v2.0.10":
+"errors-framework@https://github.com/cah-Rakesh-Shrestha/errors-framework.git#v2.0.10":
   version "2.0.10"
-  resolved "https://github.com/cahcommercial/sm-errors-framework.git#c304ac61d4f3ed68a628e4669539fb587f17abfc"
+  resolved "https://github.com/cah-Rakesh-Shrestha/errors-framework.git#c304ac61d4f3ed68a628e4669539fb587f17abfc"
 
 es-abstract@^1.17.0-next.1, es-abstract@^1.17.2, es-abstract@^1.17.5:
   version "1.17.6"
